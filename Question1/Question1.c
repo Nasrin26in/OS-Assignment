@@ -13,20 +13,19 @@ int main()
 {
 
 
-	int userEntry=0;
+	int userEntry=0; // user entered number declare  initialize from 0
 
-	pid_t pid;
+	pid_t pid; // declare procesid
 
 
-		do
+		do   // check user entered number greater than zero
 		{
 			printf("NOTE! Enter a number greater than 0.\n");
   			scanf("%d", &userEntry);
-		}while (userEntry <= 0);
+		}while (userEntry <= 0); // untill user entered less than zero it will take input or execute do statement
+		pid = fork(); // creating new process that is child process
 
-		pid = fork();
-
-		if (pid == 0)
+		if (pid == 0) // pid = 0 implies child started
 		{
 			printf("Child Process Started...\n");
 			printf("%d\n",userEntry);
@@ -34,11 +33,11 @@ int main()
 			{
 				if (userEntry%2 == 0)
 				{
-					userEntry = userEntry/2;
+					userEntry = userEntry/2;  // if number is even half it
 				}
-				else if (userEntry%2 == 1)
+				else
 				{
-					userEntry = 3 * (userEntry) + 1;
+					userEntry = 3 * (userEntry) + 1; // else multiply 3  and add 1
 				}
 
 				printf("%d\n",userEntry);
@@ -51,7 +50,7 @@ int main()
 		else
 		{   printf("----------------------------.\n");
 			printf("Parent process started  and is waiting for child process to end ...\n");
-			wait();
+			wait(); // wait for child to end
 			printf("Parent process Ended.\n");
 			printf("----------------------------.\n");
 		}
