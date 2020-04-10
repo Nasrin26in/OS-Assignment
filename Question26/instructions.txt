@@ -1,0 +1,4 @@
+# gcc filecopy.c -o cp
+# echo "enter any text." > input.txt
+# ./cp input.txt copy.txt
+# cat copy.txt 
